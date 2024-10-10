@@ -80,26 +80,12 @@ while len(texto_patente) == 0:
     patente = detecta_patente('prueba2.jpg')
     if len(patente) > 0:
         texto_patente = reconoce_patente(patente)
-
+        
         if len(texto_patente) > 5:
-            if not texto_patente[0].isdigit() and texto_patente[1].isdigit():
-                if texto_patente[2].isdigit():
-                    if texto_patente[3].isdigit() and texto_patente[4].isdigit() and texto_patente[5].isdigit():
-                        print('Patente: ' + texto_patente)
-                    else:
-                        texto_patente = ''
-                else:
-                    if not texto_patente[3].isdigit():
-                        if texto_patente[4].isdigit() and texto_patente[5].isdigit():
-                            print('Patente: ' + texto_patente)
-                        else:
-                            texto_patente = ''
-                    else:
-                        texto_patente = ''
-            else:
-                texto_patente = ''
+            print('\nPatente: ' + texto_patente[0:2] + ' ' + texto_patente[2:4] + ' ' + texto_patente[4:6] + '\n')
+            cv2.imshow('Patente', patente)
+            cv2.waitKey(0)
         else:
-            #print('Patente no reconocida!!')
             texto_patente = ''
     else:
         #print('Patente no reconocida!!')
@@ -126,12 +112,12 @@ while len(texto_patente) == 0:
                     else:
                         print('No se encontró la patente!!')
                         break
-    
-    print('VAR 1: ' + str(var_1))
-    print('VAR 2: ' + str(var_2))
-    print('VAR 3: ' + str(var_3))
-    print('VAR 4: ' + str(var_4))
-    print('VAR 5: ' + str(var_5))
+    if len(texto_patente) == 0:
+        print('VAR 1: ' + str(var_1))
+        print('VAR 2: ' + str(var_2))
+        print('VAR 3: ' + str(var_3))
+        print('VAR 4: ' + str(var_4))
+        print('VAR 5: ' + str(var_5))
 
 
 
